@@ -1,0 +1,228 @@
+<html>
+	<head>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+		<script src="js/semantic.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/semantic.css">
+		<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<style>
+		body{
+			background: white !important;
+		}
+		</style>
+	</head>
+	<body style="background:url("img/money.jpg");">
+		<div class="ui blue inverted menu">
+	  		<a href="index.html" class="item">
+	    		<i class="fa fa-home"></i>&nbsp; Home
+	  		</a>
+	  		<a href="convert.html" class="item">
+	    		<i class="fa fa-money"></i>&nbsp; Currency Converter
+	  		</a>
+	  		<a href="quiz.html" class="active item">
+	    		<i class="fa fa-question-circle"></i>&nbsp; Quiz
+	  		</a>
+		</div>
+
+		<div id="mainT">
+    <img src="img/quiz.jpg" width="19%"><br>
+		<a class="ui large blue label">Random Quiz Generator</a>
+		<!-- Quiz starts here -->
+		<div id="quesRes"></div>
+		<div id="results"></div>
+
+<script>
+
+    var quizObj = [
+    { 
+        "question": "What is the capital of Bangladesh?",
+        "choice": ["Dhaka", "Chittagong", "Sylhet"],
+        "correct": ["Dhaka"]
+   },
+   { 
+        "question": "What does 23+24 equal to?",
+        "choice": ["37", "29", "47"],  
+        "correct": ["47"]
+   },
+    { 
+        "question": "What is the real name of Damon Salvatore?",
+        "choice": ["Paul Wesley", "Steven McQueen", "Ian Somerhalder"],  
+        "correct": ["Ian Somerhalder"]
+   },
+    { 
+        "question": "What is the name of the largest planet in the universe?",
+        "choice": ["Earth", "Jupiter", "Uranus"],  
+        "correct": ["Jupiter"]
+   },
+    { 
+        "question": "What is the capital of New York?",
+        "choice": ["Manhattan", "NYC", "Albany"],  
+        "correct": ["Albany"]
+   },
+    { 
+        "question": "How many bones does the human body have?",
+        "choice": ["109", "206", "114"],  
+        "correct": ["206"]
+   },
+    { 
+        "question": "What is the alter ego of Batman?",
+        "choice": ["Bruce Banner", "Bruce Wayne", "Tony Stark"], 
+        "correct": ["Bruce Wayne"]
+   },
+    { 
+        "question": "How many books are there in the Harry Potter series?",
+        "choice": ["7", "5", "8"],  
+        "correct": ["7"]
+   },
+    { 
+        "question": "What is Naruto's surname?",
+        "choice": ["Sarutobi", "Uchiha", "Uzumaki"],  
+        "correct": ["Uzumaki"]
+   },
+    { 
+        "question": "What is the name of Sherlock Holmes' partner?",
+        "choice": ["Peterson", "Watson", "Hanson"],  
+        "correct": ["Watson"]
+   },
+   {
+        "question": "Who is the founder of apple?",
+        "choice": ["Bill Gates", "Mark Zuckerberg", "Steve Jobs"],  
+        "correct": ["Steve Jobs"]
+
+   },
+   {
+        "question": "Who is the father of Computer Science?",
+        "choice": ["Alan Turing", "Isaac Newton", "Stephen Hawking"],  
+        "correct": ["Alan Turing"]
+
+   },
+   {
+        "question": "What is the OS of apple phones?",
+        "choice": ["Symbian", "Android", "iOS"],  
+        "correct": ["iOS"]
+
+   },
+  
+   {
+        "question": "Which of the below is a server side language?",
+        "choice": ["HTML", "PHP", "CSS"],  
+        "correct": ["PHP"]
+
+   },
+   {
+        "question": "Who is the president of USA currently?",
+        "choice": ["Richard Nixon", "George W. Bush", "Barack Obama"],  
+        "correct": ["Barack Obama"]
+
+   },
+    {
+        "question": "What is the name of Artemis Fowl's best friend?",
+        "choice": ["Holly Short", "Myles Fowl", "Julia"],  
+        "correct": ["Holly Short"]
+
+   },
+    {
+        "question": "How many laws of motion did Newton give?",
+        "choice": ["5", "3", "2"],  
+        "correct": ["3"]
+
+   },
+     {
+        "question": "What is the real name of Spiderman?",
+        "choice": ["Peter Petrelli", "Peter Parker", "Luke Evans"],  
+        "correct": ["Peter Parker"]
+
+   },
+   
+
+];
+  
+  var track = [];
+	var maxQues = prompt("How many questions do you want to answer?", "5");
+	var str='<h4>Answer all the questions</h4>';
+  var randList = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+  var randomNum = new RandomList(randList);
+	for(var i=0;i<maxQues;i++){
+    var rand=randomNum.getItem();
+		//var rand = Math.floor(Math.random() * 17);
+    		str+=(i+1)+'.  '+quizObj[rand].question+'<br><br>';
+		str+='<form><table>'+
+        '<tr><td id="a1"><input type="radio" name="radio' + i + '" value="'+quizObj[rand].choice[0]+'"/>'+'&nbsp; A. &nbsp;'+quizObj[rand].choice[0]+'</td></tr>'+
+        '<tr><td id="a2"><input type="radio" name="radio' + i + '" value="'+quizObj[rand].choice[1]+'" />'+'&nbsp; B. &nbsp;'+quizObj[rand].choice[1]+'</td></tr>'+
+        '<tr><td id="a3"><input type="radio" name="radio' + i + '" value="'+quizObj[rand].choice[2]+'"/>'+'&nbsp; C. &nbsp;'+quizObj[rand].choice[2]+'</td></tr>'+
+    '</table></form>';
+    track[i]=rand;
+   
+}
+	str += '<input id="sub" value="Submit" type="button" onclick="scoreMe()"><br><br>';
+  	str += '<strong>Score:&nbsp;</strong> <input id="score" type="text" size="5" placeholder="0%" ><br><br>';
+    str += '<p id="number"></p>';
+    document.getElementById('quesRes').innerHTML = str;
+
+//randomizer function
+function RandomList(list, alias) {
+ 
+    var length = list.length;
+    this.indexes = [];
+ 
+    this.remainingItems = function(){
+        return this.indexes.length;
+    };
+ 
+    this[alias || 'getItem'] = function(){
+        var rand = Math.floor(Math.random() * this.indexes.length),
+            item = list[this.indexes[rand]];
+        this.indexes.splice(rand, 1); //array.splice(index to be added from,howmany to be removed)
+        return item;
+    };
+ 
+    while (length--) {
+        this.indexes[this.indexes.length] = length;
+    }
+ 
+} 
+//submit function
+function scoreMe(){
+  var string=[];
+  var guess = [];
+  var sum=0;
+  for(var j=0;j<maxQues;j++){
+
+        var radios = document.getElementsByName('radio' + j),
+        rl = radios.length;
+
+    for(var i = 0; i < rl; i++){
+
+      if(radios[i].checked && radios[i].value === quizObj[track[j]].correct[0]){
+        sum++;
+        guess[j]=radios[i].value;
+        string[j]='CORRECT';
+      }
+      else if(radios[i].checked && radios[i].value !== quizObj[track[j]].correct[0]){
+       string[j]='INCORRECT';
+       guess[j]=radios[i].value;
+      }
+    }
+  }
+    document.getElementById('score').value = ((sum/maxQues)*100)+'%';
+    document.getElementById('number').innerHTML = '<br>You have answered '+sum+' out of '+maxQues+' questions correctly.';
+    var printResult = '<br><a class="ui large blue label">Score Analysis</a><br><br>';
+    for(var g=0;g<maxQues;g++){
+      printResult += (g+1)+'.  '+quizObj[track[g]].question+'<br>';
+      if(string[g]==='INCORRECT'){
+      printResult +='You have guessed: '+guess[g]+'<br>';
+      printResult += string[g]+'- The correct answer is: '+quizObj[track[g]].correct[0]+'<br>';
+      }
+      else{
+        printResult +='You have guessed: '+guess[g]+'<br>';
+        printResult += string[g]+'<br>';
+      }
+    }
+    printResult += '<br><br>'
+     document.getElementById('results').innerHTML = printResult;
+}
+</script>
+</div>	
+	</body>
+</html>

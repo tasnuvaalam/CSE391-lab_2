@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+		<script src="js/semantic.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/semantic.css">
+		<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+	</head>
+	<body>
+		<div class="ui blue inverted menu">
+	  		<a href="index.html" class="active item">
+	    		<i class="fa fa-home"></i>&nbsp; Home
+	  		</a>
+	  		<a href="convert.html" class="item">
+	    		<i class="fa fa-money"></i>&nbsp; Currency Converter
+	  		</a>
+	  		<a href="quiz.html" class="item">
+	    		<i class="fa fa-question-circle"></i>&nbsp; Quiz
+	  		</a>
+		</div>
+       
+		
+        <!-- ParallaxJS shit -->
+		<div id="container" class="container">
+		<ul id="scene" class="scene">
+		
+		<li class="layer" id="im1" data-depth="3.0"><img src="img/hero.png"></li>
+		<script src="deploy/parallax.js"></script>
+		<script>
+		var scene = document.getElementById('scene');
+		var parallax = new Parallax(scene);	
+		</script>
+		</ul>
+		<br><br><br><br>
+		</div>
+
+       <!-- Till here -->
+
+       <br><br><br>
+ 		 <a class="ui large blue label fortune" style="margin-left:10%;"><p id="fortune"></p></a>
+ 		 <script>
+		var cookie = [
+		"You learn from your mistakes... You will learn a lot today.",
+		"A dream you have will come true.",
+		"True wisdom comes not from knowledge,but from understanding.",
+		"You must try, or hate yourself for not trying.",
+		"You are very talented in many ways.",
+		"There is no greater pleasure than seeing your loved ones prosper."
+		];
+ 		var rand = Math.floor(Math.random() * 6);
+		document.getElementById("fortune").innerHTML = cookie[rand];
+		</script>
+	</div>
+	</body>
+</html>

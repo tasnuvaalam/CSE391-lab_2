@@ -1,0 +1,70 @@
+#im1{
+	width: 20%;
+}
+.ui.blue.message {
+background-color: #3b83c0;
+color: white;
+}
+.ui.blue.message .header {
+color: white;
+}
+
+.convert{
+	margin-left: 33%;
+    margin-right: 30%;
+	width: 500px;
+	text-align: center;
+}
+td{
+	padding: 11px;
+	font-size: 13px;
+}
+#convBtn{
+	width: 20%;
+	background: transparent !important;
+	border: 2px solid #3b83c0;
+	color: #3b83c0;
+	font-weight: bold;
+}
+#convBtn:hover{
+	color: white;
+	background: #3b83c0 !important;
+}
+
+body{
+	background-image: url("http://fc06.deviantart.net/fs13/f/2007/020/6/8/Fire_Blue_Tree_by_JunoFuri.jpg") !important;
+	background-size: 111% 122%;
+}
+#mainT{
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#sub {
+	padding: 10px;
+	border: 2px solid #3b83c0;
+	background: transparent;
+	font-size: 15px;
+	color: #3b83c0;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-radius: 4px;
+}
+#sub:hover{
+	color:white;
+	background: #3b83c0;
+	-webkit-transition: all 0.3s linear;
+    transition: all 0.2s linear 0s;
+}
+#results,#quesRes{
+	font-size: 16px;
+}
+#a2,#a1,#a3{
+	font-size: 16px;
+}
+#score{
+	border: 0;
+}
+#results{
+	line-height: 2.5;
+}
