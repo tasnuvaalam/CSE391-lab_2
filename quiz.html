@@ -156,7 +156,7 @@
    
 }
 	str += '<input id="sub" value="Submit" type="button" onclick="scoreMe()"><br><br>';
-  	str += '<strong>Score:&nbsp;</strong> <input id="score" type="text" size="5" placeholder="0%" ><br><br>';
+  	str += '<strong>Score:&nbsp;</strong> <input id="score" type="text" size="6" placeholder="0%" ><br><br>';
     str += '<p id="number"></p>';
     document.getElementById('quesRes').innerHTML = str;
 
@@ -205,7 +205,7 @@ function scoreMe(){
       }
     }
   }
-    document.getElementById('score').value = ((sum/maxQues)*100)+'%';
+    document.getElementById('score').value = ((sum/maxQues)*100).toFixed(1)+'%';
     document.getElementById('number').innerHTML = '<br>You have answered '+sum+' out of '+maxQues+' questions correctly.';
     var printResult = '<br><a class="ui large blue label">Score Analysis</a><br><br>';
     for(var g=0;g<maxQues;g++){
